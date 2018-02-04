@@ -3755,7 +3755,7 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,3);
     glfwWindowHint(GLFW_OPENGL_PROFILE,GLFW_OPENGL_CORE_PROFILE);
-    GLFWwindow* window=glfwCreateWindow(WIDTH,HEIGHT,"SnakeGL",NULL,NULL);
+    GLFWwindow* window=glfwCreateWindow(WIDTH,HEIGHT,"Pac-ManGL",NULL,NULL);
     if(window==NULL)
     {
         cout<<"Failed to create GLFW window"<<endl;
@@ -4103,7 +4103,7 @@ int main()
             case 1:
                 blinkyTargetScatter[0]=currPacLoc[0];
                 blinkyTargetScatter[1]=currPacLoc[1];
-                pinkyTargetScatter[0]=currPacLoc[0];
+                pinkyTargetScatter[0]=currPacLoc[0]x;
                 pinkyTargetScatter[1]=currPacLoc[1];
                 inkyTargetScatter[0]=currPacLoc[0];
                 inkyTargetScatter[1]=currPacLoc[1];

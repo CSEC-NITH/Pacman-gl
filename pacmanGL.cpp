@@ -51,6 +51,7 @@ void moveClinkyLogic0();
 void moveClinky();
 void youWin();
 int countFrame=0;
+int soundd=5;
 int gameOver=0;
 float tempx=2.0/512 , tempy=2.0/288;
 int currMode=0,lastMode=0,minn,minnCount;
@@ -2942,6 +2943,7 @@ void levelWon()
 */
 void gameOverWindow(int score1){
     int temp=0,d;
+    
     charPrint(218 , 137 , 'G');
     charPrint(226 , 137 , 'A');
     charPrint(234 , 137 , 'M');
@@ -3753,7 +3755,7 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,3);
     glfwWindowHint(GLFW_OPENGL_PROFILE,GLFW_OPENGL_CORE_PROFILE);
-    GLFWwindow* window=glfwCreateWindow(WIDTH,HEIGHT,"Pac-ManGL",NULL,NULL);
+    GLFWwindow* window=glfwCreateWindow(WIDTH,HEIGHT,"SnakeGL",NULL,NULL);
     if(window==NULL)
     {
         cout<<"Failed to create GLFW window"<<endl;
@@ -4053,10 +4055,13 @@ int main()
     cout<<"Reached"<<endl;
     currMode=0;
     lastModeChangeTime=glfwGetTime();
+    float ttt=glfwGetTime();
+    system("canberra-gtk-play -f pacman_beginning.wav");
     while(!glfwWindowShouldClose(window))
     {
         
-        cout<<stopForSomeFrame<<endl;
+        
+        //cout<<stopForSomeFrame<<endl;
         glClearColor(0.0f,0.0f,0.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         if(gameOver==0)
@@ -4066,16 +4071,17 @@ int main()
         else
         {
             gameOverWindow(score);
-
+            soundd--;
+            
         }
         if(score==2600 && gameOver==0)
         {
             youWin();
         }
         else if(gameOver==0)
-
         {
-        currTime=glfwGetTime();
+        
+            currTime=glfwGetTime();
         movePacmanLogic();
         changeMode();
         switch(currMode)
@@ -4134,6 +4140,12 @@ int main()
     
         glfwSwapBuffers(window);
         glfwPollEvents();
+        if(gameOver==1 && soundd==0)
+              {
+               soundd=5;
+               system("canberra-gtk-play -f pacman_intermission.wav");
+                 }
+
         cout<<"c "<<currPacLoc[0]<<" "<<currPacLoc[1]<<endl;
         
     }

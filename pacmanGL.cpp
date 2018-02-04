@@ -162,12 +162,12 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         state.push(3);
     }
     }
-    cout<<state.back()<<endl;
+    //cout<<state.back()<<endl;
 
 }
 void attachPacman()
 {
-    //cout<<pacmanCentre[0]<<" "<<pacmanCentre[1]<<endl;
+    ////cout<<pacmanCentre[0]<<" "<<pacmanCentre[1]<<endl;
     float vertices[]={
         
         -1+(x*(pacmanCentre[0]-2)),(1-(y*(pacmanCentre[1]-5))),0.0,
@@ -260,7 +260,7 @@ void attachPacmanRight()
 }
 void attachPacmanLeft()
 {
-    cout<<"l"<<pacmanCentre[0]<<" "<<pacmanCentre[1]<<endl;
+    //cout<<"l"<<pacmanCentre[0]<<" "<<pacmanCentre[1]<<endl;
     float vertices[]={
         
         -1+(x*(pacmanCentre[0]-2)),(1-(y*(pacmanCentre[1]-5))),0.0,
@@ -312,7 +312,7 @@ void attachPacmanLeft()
 }
 void attachPacmanDown()
 {
-    //cout<<pacmanCentre[0]<<" "<<pacmanCentre[1]<<endl;
+    ////cout<<pacmanCentre[0]<<" "<<pacmanCentre[1]<<endl;
     float vertices[]={
         
         -1+(x*(pacmanCentre[0]-6)),(1-(y*(pacmanCentre[1]-1))),0.0,
@@ -529,7 +529,7 @@ void drawBigCoin4(){
 }
 void attachGhost(int ghostCentre[])
 {
-    cout<<"ghostCentre "<<ghostCentre[0]<<" "<<ghostCentre[1]<<endl;
+    //cout<<"ghostCentre "<<ghostCentre[0]<<" "<<ghostCentre[1]<<endl;
     float vertices[]={
         -1+(x*(ghostCentre[0]-6)),1-(y*(ghostCentre[1]-0)),0.0,-1+(x*(ghostCentre[0]-6)),1-(y*(ghostCentre[1]+7)),0.0,
         -1+(x*(ghostCentre[0]-5)),1-(y*(ghostCentre[1]-3)),0.0,-1+(x*(ghostCentre[0]-5)),1-(y*(ghostCentre[1]+6)),0.0,
@@ -687,7 +687,7 @@ void drawPacman()
 }
 void drawPacmanRight()
 {
-    cout<<"Right"<<endl;
+    //cout<<"Right"<<endl;
     glUseProgram(pacmanProgram);
     glBindVertexArray(vaoPacmanRight);
     glLineWidth(4.0);
@@ -1557,7 +1557,7 @@ void movePacmanLogic()
             if(stopForSomeFrame<=0)
             {
                 lastPacmanMoveTime=currTime;
-                cout<<"movePacman"<<endl;
+                //cout<<"movePacman"<<endl;
                 movePacman();
                 if(board[currPacLoc[1]][currPacLoc[0]]==1)
                 {
@@ -1590,7 +1590,7 @@ void movePacman()
     pacmanShape=!pacmanShape;
     currPacLoc[0]=(((pacmanCentre[0]))/8)-18;
     currPacLoc[1]=(pacmanCentre[1])/8;
-    cout<<currPacLoc[0]<<" "<<currPacLoc[1]<<endl;;
+    //cout<<currPacLoc[0]<<" "<<currPacLoc[1]<<endl;;
     if(!state.empty())
     {
         nextState=state.front();
@@ -1653,7 +1653,7 @@ void movePacman()
                 state.pop();
                 break;
         }
-        cout<<"a"<<pacmanCentre[0]<<" "<<pacmanCentre[1]<<endl;
+        //cout<<"a"<<pacmanCentre[0]<<" "<<pacmanCentre[1]<<endl;
     }
 
 
@@ -1694,22 +1694,22 @@ void movePacman()
                     nextPacLoc[0]=0;
                 }
         }
-        /*cout<<"currState "<<currState<<endl;
-        cout<<"npc "<<newPacCentre[0]<<" "<<newPacCentre[1]<<endl;
-        cout<<"pc "<<pacmanCentre[0]<<" "<<pacmanCentre[1]<<endl;*/
+        /*//cout<<"currState "<<currState<<endl;
+        //cout<<"npc "<<newPacCentre[0]<<" "<<newPacCentre[1]<<endl;
+        //cout<<"pc "<<pacmanCentre[0]<<" "<<pacmanCentre[1]<<endl;*/
         if(newPacCentre[0]>=156 && newPacCentre[0]<364 && board[nextPacLoc[1]][nextPacLoc[0]]!=0)
         {
-            //cout<<"c1"<<endl;
+            ////cout<<"c1"<<endl;
             pacmanCentre[0]=newPacCentre[0];
             currPacLoc[0]=nextPacLoc[0];
         }
         if(newPacCentre[1]>=36 && newPacCentre[1]<264 && board[nextPacLoc[1]][nextPacLoc[0]]!=0)
         {
-            //cout<<"c2"<<endl;
+            ////cout<<"c2"<<endl;
             pacmanCentre[1]=newPacCentre[1];
             currPacLoc[1]=nextPacLoc[1];
         }
-        //cout<<"pc "<<pacmanCentre[0]<<" "<<pacmanCentre[1]<<endl;
+        ////cout<<"pc "<<pacmanCentre[0]<<" "<<pacmanCentre[1]<<endl;
         if(pacmanShape)
         {
             switch(currState)
@@ -1770,10 +1770,10 @@ void changeMode()
 
 void moveBlinkyLogic0()
 {
-    cout<<"moveBlinkyLogic0 state = "<<currBlinkyState<<"blinkySpeed"<<1.0/blinkySpeed<< endl;
+    //cout<<"moveBlinkyLogic0 state = "<<currBlinkyState<<"blinkySpeed"<<1.0/blinkySpeed<< endl;
     if((currTime - lastBlinkyMoveTime)>=(1.0/blinkySpeed))
     {
-        cout<<"Timer true"<<endl;
+        //cout<<"Timer true"<<endl;
         for(i=0;i<4;i++)
         {
             length[i]=9999;
@@ -2006,17 +2006,17 @@ void moveBlinkyLogic0()
                 }    
                 break;
         }
-        cout<<"boxCount"<<boxCount<<endl;
-        cout<<"currBlinkyState"<<currBlinkyState<<endl;
+        //cout<<"boxCount"<<boxCount<<endl;
+        //cout<<"currBlinkyState"<<currBlinkyState<<endl;
         for(i=0;i<4;i++)
         {
-            cout<<length[i]<<endl;
+            //cout<<length[i]<<endl;
         }
         moveBlinky();
     }
     else
     {
-        cout<<"timer False"<<endl;
+        //cout<<"timer False"<<endl;
         attachGhost(blinkyCentre);
         drawGhost(blinkyProgram);
     }
@@ -2044,7 +2044,7 @@ void moveBlinky()
             currBlinkyLoc[0]=blinkyCentre[0]/8 -18;
             break;
     }
-    cout<<"loopcurrBlinkyLoc"<<currBlinkyLoc[0]<<" "<<currBlinkyLoc[1]<<endl;
+    //cout<<"loopcurrBlinkyLoc"<<currBlinkyLoc[0]<<" "<<currBlinkyLoc[1]<<endl;
     attachGhost(blinkyCentre);
     drawGhost(blinkyProgram);
 }
@@ -2052,11 +2052,11 @@ void movePinkyLogic0()
 {
     currPinkyLoc[0]=(pinkyCentre[0]/8) -18;
     currPinkyLoc[1]=pinkyCentre[1]/8;
-    cout<<"movePinkyLogic0 state = "<<currPinkyState<<"ghostSpeed"<<1.0/ghostSpeed<< endl;
+    //cout<<"movePinkyLogic0 state = "<<currPinkyState<<"ghostSpeed"<<1.0/ghostSpeed<< endl;
     if((currTime - lastGhostMoveTime)>=(1.0/ghostSpeed))
     {
         //lastGhostMoveTime=currTime;
-        cout<<"Timer true"<<endl;
+        //cout<<"Timer true"<<endl;
         for(i=0;i<4;i++)
         {
             length[i]=9999;
@@ -2302,17 +2302,17 @@ void movePinkyLogic0()
                 break;
         }
         
-        cout<<"boxCount"<<boxCount<<endl;
-        cout<<"currPinkyState"<<currPinkyState<<endl;
+        //cout<<"boxCount"<<boxCount<<endl;
+        //cout<<"currPinkyState"<<currPinkyState<<endl;
         for(i=0;i<4;i++)
         {
-            cout<<length[i]<<endl;
+            //cout<<length[i]<<endl;
         }
         movePinky();
     }
     else
     {
-        cout<<"timer False"<<endl;
+        //cout<<"timer False"<<endl;
         attachGhost(pinkyCentre);
         drawGhost(pinkyProgram);
     }
@@ -2340,7 +2340,7 @@ void movePinky()
             currPinkyLoc[0]=pinkyCentre[0]/8 -18;
             break;
     }
-    cout<<"loopcurrPinkyLoc"<<currPinkyLoc[0]<<" "<<currPinkyLoc[1]<<endl;
+    //cout<<"loopcurrPinkyLoc"<<currPinkyLoc[0]<<" "<<currPinkyLoc[1]<<endl;
     attachGhost(pinkyCentre);
     drawGhost(pinkyProgram);
 }
@@ -2348,10 +2348,10 @@ void moveInkyLogic0()
 {
     currInkyLoc[0]=(inkyCentre[0]/8) -18;
     currInkyLoc[1]=inkyCentre[1]/8;
-    cout<<"moveInkyLogic0 state = "<<currInkyState<<"ghostSpeed"<<1.0/ghostSpeed<< endl;
+    //cout<<"moveInkyLogic0 state = "<<currInkyState<<"ghostSpeed"<<1.0/ghostSpeed<< endl;
     if((currTime - lastGhostMoveTime)>=(1.0/ghostSpeed))
     {
-        cout<<"Timer true"<<endl;
+        //cout<<"Timer true"<<endl;
         for(i=0;i<4;i++)
         {
             length[i]=9999;
@@ -2365,7 +2365,7 @@ void moveInkyLogic0()
 
                 if(board[currInkyLoc[1]-1][currInkyLoc[0]]!=0)
                 {
-                    cout<<"Empty1"<<endl;
+                    //cout<<"Empty1"<<endl;
                     boxCountArray[0]=1;
                     boxCount++;
                 }
@@ -2394,7 +2394,7 @@ void moveInkyLogic0()
                 {
                     if(boxCountArray[0]==1)
                     {
-                        cout<<"Empty"<<endl;
+                        //cout<<"Empty"<<endl;
                         length[0]=((currInkyLoc[0])-(inkyTargetScatter[0]))*((currInkyLoc[0])-(inkyTargetScatter[0]));
                         length[0]+=((currInkyLoc[1]-1)-(inkyTargetScatter[1]))*((currInkyLoc[1]-1)-(inkyTargetScatter[1]));
                     }
@@ -2590,17 +2590,17 @@ void moveInkyLogic0()
                 }    
                 break;
         }
-        cout<<"boxCount"<<boxCount<<endl;
-        cout<<"currInkyState"<<currInkyState<<endl;
+        //cout<<"boxCount"<<boxCount<<endl;
+        //cout<<"currInkyState"<<currInkyState<<endl;
         for(i=0;i<4;i++)
         {
-            cout<<length[i]<<endl;
+            //cout<<length[i]<<endl;
         }
         moveInky();
     }
     else
     {
-        cout<<"timer False"<<endl;
+        //cout<<"timer False"<<endl;
         attachGhost(inkyCentre);
         drawGhost(inkyProgram);
     }
@@ -2628,8 +2628,8 @@ void moveInky()
             currInkyLoc[0]=inkyCentre[0]/8 -18;
             break;
     }
-    cout<<"centre"<<inkyCentre[0]<<" "<<inkyCentre[1];
-    cout<<"loopcurrInkyLoc"<<currInkyLoc[0]<<" "<<currInkyLoc[1]<<endl;
+    //cout<<"centre"<<inkyCentre[0]<<" "<<inkyCentre[1];
+    //cout<<"loopcurrInkyLoc"<<currInkyLoc[0]<<" "<<currInkyLoc[1]<<endl;
     attachGhost(inkyCentre);
     drawGhost(inkyProgram);
 }
@@ -2637,10 +2637,10 @@ void moveClinkyLogic0()
 {
     currClinkyLoc[0]=(clinkyCentre[0]/8) -18;
     currClinkyLoc[1]=clinkyCentre[1]/8;
-    cout<<"moveClinkyLogic0 state = "<<currClinkyState<<"ghostSpeed"<<1.0/ghostSpeed<< endl;
+    //cout<<"moveClinkyLogic0 state = "<<currClinkyState<<"ghostSpeed"<<1.0/ghostSpeed<< endl;
     if((currTime - lastGhostMoveTime)>=(1.0/ghostSpeed))
     {
-        cout<<"Timer true"<<endl;
+        //cout<<"Timer true"<<endl;
         for(i=0;i<4;i++)
         {
             length[i]=9999;
@@ -2654,7 +2654,7 @@ void moveClinkyLogic0()
 
                 if(board[currClinkyLoc[1]-1][currClinkyLoc[0]]!=0)
                 {
-                    cout<<"Empty1"<<endl;
+                    //cout<<"Empty1"<<endl;
                     boxCountArray[0]=1;
                     boxCount++;
                 }
@@ -2683,7 +2683,7 @@ void moveClinkyLogic0()
                 {
                     if(boxCountArray[0]==1)
                     {
-                        cout<<"Empty"<<endl;
+                        //cout<<"Empty"<<endl;
                         length[0]=((currClinkyLoc[0])-(clinkyTargetScatter[0]))*((currClinkyLoc[0])-(clinkyTargetScatter[0]));
                         length[0]+=((currClinkyLoc[1]-1)-(clinkyTargetScatter[1]))*((currClinkyLoc[1]-1)-(clinkyTargetScatter[1]));
                     }
@@ -2879,17 +2879,17 @@ void moveClinkyLogic0()
                 }    
                 break;
         }
-        cout<<"boxCount"<<boxCount<<endl;
-        cout<<"currClinkyState"<<currClinkyState<<endl;
+        //cout<<"boxCount"<<boxCount<<endl;
+        //cout<<"currClinkyState"<<currClinkyState<<endl;
         for(i=0;i<4;i++)
         {
-            cout<<length[i]<<endl;
+            //cout<<length[i]<<endl;
         }
         moveClinky();
     }
     else
     {
-        cout<<"timer False"<<endl;
+        //cout<<"timer False"<<endl;
         attachGhost(clinkyCentre);
         drawGhost(clinkyProgram);
     }
@@ -2917,8 +2917,8 @@ void moveClinky()
             currClinkyLoc[0]=clinkyCentre[0]/8 -18;
             break;
     }
-    cout<<"centre"<<clinkyCentre[0]<<" "<<clinkyCentre[1];
-    cout<<"loopcurrClinkyLoc"<<currClinkyLoc[0]<<" "<<currClinkyLoc[1]<<endl;
+    //cout<<"centre"<<clinkyCentre[0]<<" "<<clinkyCentre[1];
+    //cout<<"loopcurrClinkyLoc"<<currClinkyLoc[0]<<" "<<currClinkyLoc[1]<<endl;
     attachGhost(clinkyCentre);
     drawGhost(clinkyProgram);
 }
@@ -3651,10 +3651,10 @@ int startScreenSpeed=20;
     charPrint(250 , 80 , 'M');
     charPrint(258 , 80 , 'A');
     charPrint(264 , 80 , 'N');
-    cout<<startCurrTime- startScreenStartTime<<" "<<1.0/startScreenSpeed<<endl;
+    //cout<<startCurrTime- startScreenStartTime<<" "<<1.0/startScreenSpeed<<endl;
       if((startCurrTime- startScreenStartTime) > (1.0/startScreenSpeed))
       {
-        cout<<"True"<<endl;
+        //cout<<"True"<<endl;
         startScreenStartTime=startCurrTime;
         posx+=3;
       }
@@ -3768,7 +3768,7 @@ int main()
         cout<<"Failed to initialize GLAD"<<endl;
         return -1;
     }
-    glViewport(0,0,WIDTH,HEIGHT);
+    glViewport(0,0,1920,1080);
     glfwSetFramebufferSizeCallback(window,framebuffer_size_callback);
 
     int vertexShader=glCreateShader(GL_VERTEX_SHADER);
@@ -4052,7 +4052,7 @@ int main()
     currPinkyLoc[1]=pinkyCentre[1]/8;
     currInkyLoc[0]=inkyCentre[0]/8 -18;
     currInkyLoc[1]=inkyCentre[1]/8;
-    cout<<"Reached"<<endl;
+    //cout<<"Reached"<<endl;
     currMode=0;
     lastModeChangeTime=glfwGetTime();
     float ttt=glfwGetTime();
@@ -4061,7 +4061,7 @@ int main()
     {
         
         
-        //cout<<stopForSomeFrame<<endl;
+        ////cout<<stopForSomeFrame<<endl;
         glClearColor(0.0f,0.0f,0.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         if(gameOver==0)
@@ -4103,7 +4103,7 @@ int main()
             case 1:
                 blinkyTargetScatter[0]=currPacLoc[0];
                 blinkyTargetScatter[1]=currPacLoc[1];
-                pinkyTargetScatter[0]=currPacLoc[0]x;
+                pinkyTargetScatter[0]=currPacLoc[0];
                 pinkyTargetScatter[1]=currPacLoc[1];
                 inkyTargetScatter[0]=currPacLoc[0];
                 inkyTargetScatter[1]=currPacLoc[1];
@@ -4134,7 +4134,7 @@ int main()
         drawGhost(clinkyProgram);
         drawWall();
         attachScore(score);
-        cout<<"score "<<score<<endl; 
+        //cout<<"score "<<score<<endl; 
         
         }
     
@@ -4146,7 +4146,7 @@ int main()
                system("canberra-gtk-play -f pacman_intermission.wav");
                  }
 
-        cout<<"c "<<currPacLoc[0]<<" "<<currPacLoc[1]<<endl;
+        //cout<<"c "<<currPacLoc[0]<<" "<<currPacLoc[1]<<endl;
         
     }
     glDeleteVertexArrays(1,&vaoReferenceLine[0][0]);
